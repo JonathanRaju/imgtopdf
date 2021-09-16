@@ -17,6 +17,7 @@ export default class ImageUpload extends Component {
     };
     this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this);
     this.uploadFiles = this.uploadFiles.bind(this);
+    this.generatePdf = this.generatePdf.bind(this);
   }
   // Uploading multiple files to state
   uploadMultipleFiles(e) {
@@ -35,20 +36,25 @@ export default class ImageUpload extends Component {
       
     // }
     
-    this.setState({ file: this.fileArray});
-    
-    
-    this.setState({name:this.fileName})
-    
-   
-    console.warn(this.state.file)
-    console.warn(this.state.name)
     
     
     // console.warn(this.fileName)
   }
 
-  uploadFiles = (e) => {
+  uploadFiles(e){
+    e.preventDefault()
+    this.setState({ file: this.fileArray});
+    
+    
+    this.setState({name:this.fileName})
+    alert("Images Uploaded Successfully")
+   
+    console.warn(this.state.file)
+    console.warn(this.state.name)
+    
+  }
+
+  generatePdf = (e) => {
     e.preventDefault();
     var doc = new jsPDF();
     var data = this.state.file;
@@ -113,6 +119,13 @@ export default class ImageUpload extends Component {
             onClick={this.uploadFiles}
           >
             Upload
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger btn-block"
+            onClick={this.generatePdf}
+          >
+            GeneratePdf
           </button>
           </form>
       </>
