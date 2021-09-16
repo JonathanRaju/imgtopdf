@@ -35,12 +35,12 @@ export default class ImageUpload extends Component {
       
     // }
     
-    this.setState({ file: [...this.state.file,this.fileArray]});
+    this.setState({ file: this.fileArray});
     
-    this.fileArray=[]
+    
     this.setState({name:this.fileName})
     
-    this.fileName=[]
+   
     console.warn(this.state.file)
     console.warn(this.state.name)
     
